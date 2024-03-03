@@ -32,6 +32,10 @@ body{
 }
 
 
+.noneDisplay{
+    display: none !important;
+}
+
 /* sidebar section style */
 .sidebar{
     position: fixed;
@@ -84,6 +88,17 @@ body{
     background-color: #fff;
     width: 100%;
     padding-top: 50px;
+    overflow-y: scroll;
+}
+
+.sidebar .col2::-webkit-scrollbar{
+    display: none;
+}
+
+.sidebar .col2 ul.ulNum-1 span{
+    color: #43a043;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .sidebar .col2 ul li{

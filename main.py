@@ -3,10 +3,15 @@ from flask import Flask,render_template,send_from_directory,send_file,request,ur
 from function import getFilters
 
 app = Flask(__name__)
-files_uploaded_before = os.listdir(os.path.join(app.instance_path,'uploads'))
-if files_uploaded_before:
-    for file in files_uploaded_before:
-        os.remove(f"{os.path.join(app.instance_path,'uploads')}\{file}")
+
+try:
+    files_uploaded_before = os.listdir(os.path.join(app.instance_path,'uploads'))
+    if files_uploaded_before:
+        for file in files_uploaded_before:
+            os.remove(f"{os.path.join(app.instance_path,'uploads')}\{file}")
+except:
+    os.mkdir(app.instance_path)
+    os.mkdir(app.instance_path+'/uploads')
 
 @app.route('/')
 def hello():

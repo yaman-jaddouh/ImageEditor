@@ -123,11 +123,13 @@ function getImgSelected(item){
             console.log(document.getElementById("imageNum-" + item.id.slice(10, item.id.length)))
             isImgSelected.push(document.getElementById("imageNum-" + item.id.slice(10, item.id.length)).name)//change to name
             console.log(isImgSelected)
+            window.isImgSelected = isImgSelected
         }
         else{
             item.classList.remove("bgFill")
             isImgSelected = isImgSelected.filter(e => e!== (document.getElementById("imageNum-" + item.id.slice(10, item.id.length)).name))
             console.log(isImgSelected)
+            window.isImgSelected = isImgSelected
 
         }
 

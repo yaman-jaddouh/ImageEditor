@@ -16,7 +16,6 @@ def BlurFilter(imageList,dirction):
         loadImage = cv2.cvtColor(loadImage,cv2.COLOR_BGR2RGB)
         Blur_Effect_Img = cv2.GaussianBlur(loadImage, (35, 35), 0)
         cv2.imwrite(f"{dirction}/editbyfilter/{image}",Blur_Effect_Img)
-
 def SepiaFilter(imageList,dirction):
     print(imageList,dirction)
     for image in imageList:
@@ -51,9 +50,8 @@ def edgeFilter(imageList,dirction):
     for image in imageList:
         loadImage= cv2.imread(f"{dirction}/uploads/{image}")
         loadImage = cv2.cvtColor(loadImage,cv2.COLOR_BGR2RGB)
-        _, bw_image = cv2.threshold(loadImage, 127, 255, cv2.THRESH_BINARY)
-        cv2.imwrite(f"{dirction}/editbyfilter/{image}",bw_image)
-
+        edges = cv2.Canny(loadImage, 50, 150)
+        cv2.imwrite(f"{dirction}/editbyfilter/{image}",edges)
 def InvertedFilter(imageList,dirction):
     for image in imageList:
         loadImage= cv2.imread(f"{dirction}/uploads/{image}")
@@ -63,6 +61,7 @@ def Origin(imageList,dirction):
     for image in imageList:
         loadImage= cv2.imread(f"{dirction}/uploads/{image}")
         cv2.imwrite(f"{dirction}/editbyfilter/{image}",loadImage)
+
 filterDic ={ 
     'Blur':BlurFilter,
     'Sepia':SepiaFilter,
@@ -72,7 +71,6 @@ filterDic ={
     'Edge':edgeFilter,
     'Inverted':InvertedFilter,
     'Origin':Origin
-    
 }
 # loadImage= cv2.imread('./testImage.png')
 # # loadImage = cv2.cvtColor(loadImage,cv2.COLOR_BGR2RGB)

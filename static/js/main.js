@@ -72,7 +72,7 @@ const onDrop = (event) => {
         imgSrcArr.push(image.src);
         image.id = `imageNum-` + i;
         image.className = "myImg"
-        image.setAttribute('name',event.target.files[i-numofimg].name) // insert attribute name to refer to the name file of image
+        image.setAttribute('name',files[i-numofimg].name) // insert attribute name to refer to the name file of image
         document.querySelector("#imageCont-" + i).appendChild(image);
 
         imageFormData.append('files', files[i - numofimg]) 

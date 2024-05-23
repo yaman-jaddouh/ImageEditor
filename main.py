@@ -1,6 +1,6 @@
 import os 
 from flask import Flask,render_template,send_from_directory,send_file,request,jsonify
-from function import getFilters
+from function import getFilters ,getFrames
 from editImage import filterDic,get_image_dpi,convertImage
 app = Flask(__name__)
 try:
@@ -27,7 +27,7 @@ except:
 
 @app.route('/')
 def hello():
-    return render_template('index.html',filters =getFilters(),src='./images/Filters/Blur.png')
+    return render_template('index.html',filters =getFilters(),frames=getFrames(),src='./images/Filters/Blur.png')
 
 @app.route('/css/<filename>')
 def sendCss(filename):
@@ -44,9 +44,12 @@ def sendImages(filename):
 def sendFilters(filename):
     return send_from_directory('images/Filters',filename)
 
+@app.route('/images/Frames/<filename>')
+def sendFrames(filename):
+    return send_from_directory('images/Frames',filename)
+
 @app.route('/filter/<filename>' ,methods=['POST','GET'])
 def applyFilter(filename):
-    print(123)
     if request.method == 'POST':
         print(request.json)
         filterDic[request.json.get('filter')](request.json.get('imageList'),app.instance_path)

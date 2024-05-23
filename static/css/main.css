@@ -65,6 +65,8 @@ body{
     padding: 14px;
     text-align: center;
     border-bottom: 1px solid #ddd;
+    cursor: pointer;
+
 }
 
 .sidebar ul li a{
@@ -110,6 +112,7 @@ body{
 
 .sidebar .col2 ul li{
     padding: 15px;
+    width: 100%;
 }
 
 .sidebar .col2 ul li .liHeader{
@@ -134,27 +137,35 @@ body{
     color: #666;
 }
 
-.sidebar .col2 ul .ResizeHeader{
+.sidebar .col2 ul .liHeader{
     position: relative;
 }
-
 .sidebar .col2 ul li .resizeCont{
+    top: 20%;
+
+}
+.sidebar .col2 ul li .cropCont{
+    top: 216px;
+}
+.sidebar .col2 ul li .resizeCont,
+.sidebar .col2 ul li .cropCont{
     background-color: #fff;
     position: absolute;
-    top: 20%;
-    right: 10px;
-    width: 72%;
+    right: 1px;
+
+    width: 78%;
     height: 100%;
-    padding: 20px 0;
-    color: #666;    
+    padding: 20px 10px;
+    color: #666;
+    z-index: 99;
     transition: 0.5s all ease-in-out;
 }
 
-.sidebar .col2 ul li .resizeCont.dsiable{
+.sidebar .col2 ul li .disable{
     top: 200%;
 }
 
-.sidebar .col2 ul li .resizeCont p{
+.sidebar .col2 ul li  p{
     font-size: 14px;
 }
 
@@ -217,8 +228,7 @@ body{
 
 /* upload image contineer style */
 .primContineer{
-    width: calc(100vw - 300px);
-    margin-left: 300px;
+    width: 100vw;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -251,7 +261,7 @@ body{
     display: none !important;
 }
 
-.cont {
+.cont, .framesCont {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -259,6 +269,12 @@ body{
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
+}
+
+.framesCont span{
+    color: #43a043;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .cont.hidden{
@@ -306,6 +322,22 @@ body{
     width: 250px;
     height: 170px;
     line-height: 160px;
+}
+
+.frameUpload{
+    width: 205px;
+    height: 100%;
+    line-height: 160px;   
+    font-size: 12px;
+    margin: 16px;    
+}
+
+.frameUpload input{
+    display: none;
+}
+
+.framesCont li img{
+    width: 100%;
 }
 
 .popUp{
@@ -379,4 +411,35 @@ body{
 
 .moreUpload input{
     display: none;
+}
+
+.cropCont p{
+    font-size: 14px !important;
+    padding: 16px 0 0;
+    font-weight: 500;
+}
+
+.btnSec{
+
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+
+.btnSec button{
+    width: 100px;
+    outline: none;
+    border: none;
+    background-color: #43a043;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.hiddenSidebar{
+    width: 0 !important;
+    display: none !important;
 }

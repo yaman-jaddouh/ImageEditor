@@ -9,13 +9,15 @@
      <link rel="stylesheet" href="./css/all.main.css" />
      <!---------------------------------------        Main Style       --------------------------------------->
      <link rel="stylesheet" href="./css/main.css" />
+
+     <link  href="/static/js/cropperjs/cropper.css" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="contineer">
 
-        <div class="sidebar">
+        <div class="sidebar hiddenSidebar">
             <div class="row">
                 <div class="col1">
                     <ul id="colOneSidebarList">
@@ -59,7 +61,7 @@
                                 <img src="./images/Svg/resize-out-svgrepo-com.svg" alt="">
                                 <p>Resize</p>
                             </div>
-                            <div class="resizeCont dsiable">
+                            <div class="resizeCont disable">
                                 <p>selct the size from the menu </p>
                                 <select name="Resize" id="ResizeImg">
                                     <option value="7.5:10">7.5x10</option>
@@ -79,15 +81,23 @@
                                     </div>
                                 </div>
                                 <div class="Resizebtn">
-                                    <button class="ResizeCancle">cancle</button>
                                     <button class="ResizeSend" >Resize</button>
+                                    <button class="ResizeCancle">cancle</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="liHeader">
+                            <div class="liHeader cropHeader">
                                 <img src="./images/Svg/crop-svgrepo-com.svg" alt="">
                                 <p>Crop</p>
+                            </div>
+                            <div class="cropCont disable">
+                                <p>Select part of image to crop it</p>
+                                <div class="btnSec">
+                                    <button class="cropSend" id="btn-crop">Crop</button>
+                                    <button class="cropCancle" id="btn-crop-cancle">Cancle</button>
+                                </div>
+
                             </div>
 
                         </li>
@@ -113,7 +123,40 @@
                         {% endfor %}
                     </ul>
                     <ul class="ulNum-2">
-                        222
+                        <div class="framesCont">
+                            <!-- {%for item in frame%}
+                            <li>
+                                <img src="{{item.src}}" name ="{{item.name}}"  class ="frame" alt="">
+                                <span>{{item.name}}</span>
+                            </li>
+                            {% endfor %} -->
+                            <li>
+                                <img src="/images/Filters/Origin.png" name ="frame"  class ="frame" alt="">
+                                <span>frame Name</span>
+                            </li>
+                            <li>
+                                <img src="/images/Filters/Origin.png" name ="frame"  class ="frame" alt="">
+                                <span>frame Name</span>
+                            </li>                        <li>
+                                <img src="/images/Filters/Origin.png" name ="frame"  class ="frame" alt="">
+                                <span>frame Name</span>
+                            </li>                        <li>
+                                <img src="/images/Filters/Origin.png" name ="frame"  class ="frame" alt="">
+                                <span>frame Name</span>
+                            </li>                        <li>
+                                <img src="/images/Filters/Origin.png" name ="frame"  class ="frame" alt="">
+                                <span>frame Name</span>
+                            </li>
+                        </div>
+
+                            <div class="frameCont" id="frameUpload">
+                                <p>
+                                    <label class="pretty-upload  frameUpload">
+                                        <input multiple type="file" accept="image/*" name="frame" id="file" onchange="loadFrame(event)" />
+                                            Upload frame From Computer
+                                    </label>
+                                </p>
+                            </div>
                     </ul>
                     <ul class="ulNum-3">
                         333
@@ -144,7 +187,7 @@
                     <label class="pretty-upload">
                         <input type="file" multiple type="file" accept="image/*" name="image" id="file"
                             onchange="loadFile(event)" />
-                        Upload From Computer
+                        Upload images From Computer
                     </label>
                 </p>
             </div>
@@ -166,5 +209,7 @@
 
 <script src="/static/js/main.js"></script>
 <script src="/static/js/handleSelectedPhoto.js"></script>
+<script src="/static/js/cropperjs/cropper.js"></script>
+
 
 </html>

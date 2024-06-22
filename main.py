@@ -114,4 +114,18 @@ def handle():
     for file in files:
         file.save(os.path.join(os.path.join(app.instance_path,'uploads'), file.filename))
     return "as"
+
+@app.route('/FrameUploaded' , methods=['POST'])
+def handleFrame():
+    files = request.files.getlist('files')
+    path = app.instance_path.replace('\instance',"")
+    path += "\images\Frames\\"
+    print(path)
+    print("hello")
+    print(files)
+    for file in files:
+        number = len(os.listdir(path))+1
+        print(number)
+        file.save(f"{path}frame ({number}).png")
+    return "as"
 app.run(host='0.0.0.0',port=5000)
